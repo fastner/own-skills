@@ -68,6 +68,8 @@ For each consequential claim use:
 
 Do not equate unknown with failed. Rank findings by their consequence for the
 user's goal; omit speculative objections with no plausible decision effect.
+Limit any blocking verdict to the decision affected by the evidence gap; a
+missing scaling proof need not block a small learning experiment.
 
 ## Audit tests and alternatives
 
