@@ -1,9 +1,9 @@
 ---
-name: skeptic
+name: effective-skeptic
 description: Critically assess another session's results, plans, diagnoses, or tests against the user's goal; identify evidence gaps and better alternatives, record conclusions that survive scrutiny, and relay bounded corrections when the user authorizes steering.
 ---
 
-# Skeptic
+# Effective Skeptic
 
 Determine whether the work supports the user's intended decision. Try to refute
 consequential claims; do not manufacture objections to appear critical. A useful
@@ -19,8 +19,34 @@ read-only limits unless the user changes them. Saving a report needs a requested
 or established destination; otherwise document the assessment inline.
 
 Use `review` for assessment and `steer` for an authorized correction handoff.
-Infer the mode from natural language; a bare invocation with a clear target can
-start review. Ask only for a missing target or choice that affects the work.
+Infer the mode from natural language; mode keywords and flags are optional.
+
+## Input and goal discovery
+
+- **Session reference only:** `$effective-skeptic <session-link-or-id>` is a
+  complete review request. Read that session first and recover its goal from
+  user messages, corrections, and accepted decisions. Do not ask the user to
+  restate an accessible goal. State the recovered goal briefly, with its source,
+  and assess the latest work against it.
+- **Session plus free text:** honor the supplied focus, goal, and limits. Read
+  the session for context; do not override an explicit current goal with an older
+  one. Free text can also request an authorized steering handoff.
+- **Free text or artifact without a session:** review the supplied proposal,
+  result, or artifact against the goal stated in that request or established in
+  this chat. Do not search other sessions to invent a target or goal. A session
+  link is optional; ordinary natural-language requests remain supported.
+- **Goal unavailable or ambiguous:** after reasonable reading of the supplied
+  session/context, ask the user one concise question about the intended outcome.
+  This also applies if the session is inaccessible and the supplied text cannot
+  establish its goal. Do not silently substitute the assistant's plan, a session
+  title, or a guessed success criterion. Wait for the answer before a goal-based
+  verdict or steering; independent evidence gathering can continue.
+- **No usable target:** ask which session or material to assess.
+
+Examples: `$effective-skeptic <session-link>`; `$effective-skeptic Prüfe bei
+<session-link> besonders, ob die Tests das Ziel absichern. Nichts senden.`;
+`$effective-skeptic Prüfe diesen Plan auf das Ziel von zwei wiederkehrenden
+Umsatzquellen: <plan>`.
 
 ## Establish what is actually being reviewed
 
@@ -42,6 +68,10 @@ start review. Ask only for a missing target or choice that affects the work.
 
 Start with the work's strongest reasonable interpretation. Identify its few
 consequential claims and ask what evidence could make each false.
+Read important sections against one another: incompatible promises, hidden
+dependencies, ambiguous handoffs, and sequencing can fail even when each section
+looks plausible alone. Check whether an apparent objection is already resolved
+in the artifact or accepted by the user before presenting it as a new finding.
 
 For each material claim, separate observation, reported information, assumption,
 and inference. Trace the evidence to the original source when feasible. Check
@@ -70,6 +100,13 @@ Do not equate unknown with failed. Rank findings by their consequence for the
 user's goal; omit speculative objections with no plausible decision effect.
 Limit any blocking verdict to the decision affected by the evidence gap; a
 missing scaling proof need not block a small learning experiment.
+
+Before finalizing, challenge your own strongest findings: could each be a false
+positive, an inflated severity, or an objection outside the actual goal? For a
+tool-checkable defect, obtain focused evidence when authorized; otherwise label
+it unverified. Check whether the suggested remedy creates greater cost, risk,
+or complexity than the original issue. Keep disagreement and unresolved facts
+visible rather than turning consensus into proof.
 
 ## Audit tests and alternatives
 

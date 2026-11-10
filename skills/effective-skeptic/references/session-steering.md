@@ -16,6 +16,8 @@ that another session is reachable or a message was delivered.
    since review, reconcile findings with the new work and drop resolved points.
    If it is running, label the cutoff and request reconciliation with current
    work. Do not interrupt it or alter its settings without authorization.
+   A changed artifact or session invalidates only the affected findings until
+   rechecked; do not present an earlier verdict as covering unreviewed revisions.
 3. Send only context needed for correction. Exclude raw conversation histories,
    credentials, personal details, and unrelated project information. A public
    destination requires appropriate publication authorization.
