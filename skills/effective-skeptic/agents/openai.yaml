@@ -1,0 +1,4 @@
+interface:
+  display_name: "Effective Skeptic"
+  short_description: "Challenge session results and steer corrections"
+  default_prompt: "Use $effective-skeptic to assess this session against its goal, challenge its evidence and tests, and record what survives scrutiny."
