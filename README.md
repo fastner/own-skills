@@ -32,3 +32,5 @@ Updates follow the configured Dalo source policy.
 The approach draws on Effective Flow's `investigate` skeptic: attempt to refute
 conclusions, distinguish weakened from not-refuted claims, and state the checked
 scope. It generalizes that method to plans, experiments and session steering.
+
+[Comparison with other skeptic skills and design choices](docs/skeptic-design.md).
